@@ -1,0 +1,2968 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x9278B93A56C94B9A",
+      "device": "xc7z020clg400-1",
+      "gen_directory": "../../../../mips.gen/sources_1/bd/mips",
+      "name": "mips",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2020.2",
+      "validated": "true"
+    },
+    "design_tree": {
+      "Memory": {
+        "MEM_WB_0": "",
+        "MemWrt": "",
+        "dataMemory_0": ""
+      },
+      "WriteBack": {
+        "MemtoReg": "",
+        "RegWrtEn": "",
+        "regWrData": ""
+      },
+      "InstructionFetch": {
+        "jmpSrc": "",
+        "mux_0": "",
+        "pcSrc": "",
+        "constantFour": "",
+        "adder_0": "",
+        "mux_3": "",
+        "programCounter_0": "",
+        "IF_ID_0": "",
+        "instructionMemory_0": ""
+      },
+      "InstructionExecute": {
+        "alu_0": "",
+        "regWrAdd": "",
+        "RegDst": "",
+        "op2Mux": "",
+        "mux3_1_0": "",
+        "EX_MEM_0": "",
+        "aluOp": "",
+        "ALUSrc": "",
+        "mux3_1_1": ""
+      },
+      "ForwardingUnit": {
+        "xlslice_0": "",
+        "xlslice_1": "",
+        "DataHazard_0": ""
+      },
+      "HazardDetectionUnit": {
+        "xlconstant_0": "",
+        "mux_0": "",
+        "HazardDetectionUnit_0": "",
+        "xlslice_0": "",
+        "xlslice_1": "",
+        "xlconcat_0": ""
+      },
+      "jumpAddCalc": {
+        "xlconcat_1": "",
+        "xlslice_4": "",
+        "xlslice_5": "",
+        "xlconstant_0": ""
+      },
+      "InstructionDecode": {
+        "ID_EX_0": "",
+        "controlLogic_0": "",
+        "xlslice_0": "",
+        "xlslice_1": "",
+        "shiftLeft_0": "",
+        "xlslice_2": "",
+        "xlslice_3": "",
+        "equalityChecker_0": "",
+        "RegFile_0": "",
+        "signExtern_0": "",
+        "adder_1": "",
+        "xlconcat_0": ""
+      }
+    },
+    "ports": {
+      "in_clock": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "mips_in_clock",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.000",
+            "value_src": "default"
+          }
+        }
+      }
+    },
+    "components": {
+      "Memory": {
+        "ports": {
+          "Din": {
+            "direction": "I",
+            "left": "9",
+            "right": "0"
+          },
+          "writeAddress": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "regWrtAdd": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "in_clock": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "rdDataop": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "controlsop": {
+            "direction": "O",
+            "left": "9",
+            "right": "0"
+          },
+          "aluop": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "regWrtAddop": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          },
+          "writeData": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          }
+        },
+        "components": {
+          "MEM_WB_0": {
+            "vlnv": "xilinx.com:module_ref:MEM_WB:1.0",
+            "xci_name": "mips_MEM_WB_0_0",
+            "xci_path": "ip\\mips_MEM_WB_0_0\\mips_MEM_WB_0_0.xci",
+            "inst_hier_path": "Memory/MEM_WB_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "MEM_WB",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "rdData": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "controls": {
+                "direction": "I",
+                "left": "9",
+                "right": "0"
+              },
+              "alu": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "regWrtAdd": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "clk": {
+                "type": "clk",
+                "direction": "I",
+                "parameters": {
+                  "CLK_DOMAIN": {
+                    "value": "mips_in_clock",
+                    "value_src": "default_prop"
+                  }
+                }
+              },
+              "rdDataop": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "controlsop": {
+                "direction": "O",
+                "left": "9",
+                "right": "0"
+              },
+              "aluop": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "regWrtAddop": {
+                "direction": "O",
+                "left": "4",
+                "right": "0"
+              }
+            }
+          },
+          "MemWrt": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "mips_xlslice_0_4",
+            "xci_path": "ip\\mips_xlslice_0_4\\mips_xlslice_0_4.xci",
+            "inst_hier_path": "Memory/MemWrt",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "6"
+              },
+              "DIN_TO": {
+                "value": "6"
+              },
+              "DIN_WIDTH": {
+                "value": "10"
+              },
+              "DOUT_WIDTH": {
+                "value": "1"
+              }
+            }
+          },
+          "dataMemory_0": {
+            "vlnv": "xilinx.com:module_ref:dataMemory:1.0",
+            "xci_name": "mips_dataMemory_0_0",
+            "xci_path": "ip\\mips_dataMemory_0_0\\mips_dataMemory_0_0.xci",
+            "inst_hier_path": "Memory/dataMemory_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "dataMemory",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "i_clk": {
+                "type": "clk",
+                "direction": "I",
+                "parameters": {
+                  "CLK_DOMAIN": {
+                    "value": "mips_in_clock",
+                    "value_src": "default_prop"
+                  }
+                }
+              },
+              "readAddress": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "writeAddress": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "writeData": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "readData": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "memWrite": {
+                "direction": "I"
+              }
+            }
+          }
+        },
+        "nets": {
+          "dataMemory_0_readData": {
+            "ports": [
+              "dataMemory_0/readData",
+              "MEM_WB_0/rdData"
+            ]
+          },
+          "xlslice_0_Dout": {
+            "ports": [
+              "MemWrt/Dout",
+              "dataMemory_0/memWrite"
+            ]
+          },
+          "EX_MEM_0_controlop": {
+            "ports": [
+              "Din",
+              "MemWrt/Din",
+              "MEM_WB_0/controls"
+            ]
+          },
+          "InstructionExecute_aluop": {
+            "ports": [
+              "writeAddress",
+              "MEM_WB_0/alu",
+              "dataMemory_0/readAddress",
+              "dataMemory_0/writeAddress"
+            ]
+          },
+          "InstructionExecute_RegWrtAddop": {
+            "ports": [
+              "regWrtAdd",
+              "MEM_WB_0/regWrtAdd"
+            ]
+          },
+          "i_clk_0_1": {
+            "ports": [
+              "in_clock",
+              "MEM_WB_0/clk",
+              "dataMemory_0/i_clk"
+            ]
+          },
+          "MEM_WB_0_rdDataop": {
+            "ports": [
+              "MEM_WB_0/rdDataop",
+              "rdDataop"
+            ]
+          },
+          "MEM_WB_0_controlsop": {
+            "ports": [
+              "MEM_WB_0/controlsop",
+              "controlsop"
+            ]
+          },
+          "MEM_WB_0_aluop": {
+            "ports": [
+              "MEM_WB_0/aluop",
+              "aluop"
+            ]
+          },
+          "regWrAddr_1": {
+            "ports": [
+              "MEM_WB_0/regWrtAddop",
+              "regWrtAddop"
+            ]
+          },
+          "EX_MEM_0_wrtDataop": {
+            "ports": [
+              "writeData",
+              "dataMemory_0/writeData"
+            ]
+          }
+        }
+      },
+      "WriteBack": {
+        "ports": {
+          "in0": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "in1": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "muxOut": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "Din": {
+            "direction": "I",
+            "left": "9",
+            "right": "0"
+          },
+          "Dout": {
+            "direction": "O",
+            "left": "0",
+            "right": "0"
+          }
+        },
+        "components": {
+          "MemtoReg": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "mips_xlslice_0_5",
+            "xci_path": "ip\\mips_xlslice_0_5\\mips_xlslice_0_5.xci",
+            "inst_hier_path": "WriteBack/MemtoReg",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "7"
+              },
+              "DIN_TO": {
+                "value": "7"
+              },
+              "DIN_WIDTH": {
+                "value": "10"
+              },
+              "DOUT_WIDTH": {
+                "value": "1"
+              }
+            }
+          },
+          "RegWrtEn": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "mips_xlslice_0_6",
+            "xci_path": "ip\\mips_xlslice_0_6\\mips_xlslice_0_6.xci",
+            "inst_hier_path": "WriteBack/RegWrtEn",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "1"
+              },
+              "DIN_TO": {
+                "value": "1"
+              },
+              "DIN_WIDTH": {
+                "value": "10"
+              },
+              "DOUT_WIDTH": {
+                "value": "1"
+              }
+            }
+          },
+          "regWrData": {
+            "vlnv": "xilinx.com:module_ref:mux:1.0",
+            "xci_name": "mips_mux_2_0",
+            "xci_path": "ip\\mips_mux_2_0\\mips_mux_2_0.xci",
+            "inst_hier_path": "WriteBack/regWrData",
+            "parameters": {
+              "width": {
+                "value": "32"
+              }
+            },
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "mux",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "in0": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "in1": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "ctrl": {
+                "direction": "I"
+              },
+              "muxOut": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          }
+        },
+        "nets": {
+          "xlslice_0_Dout1": {
+            "ports": [
+              "MemtoReg/Dout",
+              "regWrData/ctrl"
+            ]
+          },
+          "MEM_WB_0_aluop": {
+            "ports": [
+              "in0",
+              "regWrData/in0"
+            ]
+          },
+          "MEM_WB_0_rdDataop": {
+            "ports": [
+              "in1",
+              "regWrData/in1"
+            ]
+          },
+          "mux_2_muxOut": {
+            "ports": [
+              "regWrData/muxOut",
+              "muxOut"
+            ]
+          },
+          "MEM_WB_0_controlsop": {
+            "ports": [
+              "Din",
+              "RegWrtEn/Din",
+              "MemtoReg/Din"
+            ]
+          },
+          "xlslice_0_Dout": {
+            "ports": [
+              "RegWrtEn/Dout",
+              "Dout"
+            ]
+          }
+        }
+      },
+      "InstructionFetch": {
+        "ports": {
+          "Din": {
+            "direction": "I",
+            "left": "9",
+            "right": "0"
+          },
+          "in_clock": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "IF_Flush": {
+            "direction": "I"
+          },
+          "instructionOp": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "pcOut": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "in1": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "in2": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "IF_ID_Write": {
+            "direction": "I"
+          },
+          "PCWrite": {
+            "direction": "I"
+          }
+        },
+        "components": {
+          "jmpSrc": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "mips_xlslice_0_7",
+            "xci_path": "ip\\mips_xlslice_0_7\\mips_xlslice_0_7.xci",
+            "inst_hier_path": "InstructionFetch/jmpSrc",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "8"
+              },
+              "DIN_TO": {
+                "value": "8"
+              },
+              "DIN_WIDTH": {
+                "value": "10"
+              },
+              "DOUT_WIDTH": {
+                "value": "1"
+              }
+            }
+          },
+          "mux_0": {
+            "vlnv": "xilinx.com:module_ref:mux:1.0",
+            "xci_name": "mips_mux_0_1",
+            "xci_path": "ip\\mips_mux_0_1\\mips_mux_0_1.xci",
+            "inst_hier_path": "InstructionFetch/mux_0",
+            "parameters": {
+              "width": {
+                "value": "32"
+              }
+            },
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "mux",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "in0": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "in1": {
+                "direction": "I",
+                "left": "31",
+                "right": "0",
+                "parameters": {
+                  "PortWidth": {
+                    "value": "32",
+                    "value_src": "ip_prop"
+                  }
+                }
+              },
+              "ctrl": {
+                "direction": "I"
+              },
+              "muxOut": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          },
+          "pcSrc": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "mips_xlslice_0_3",
+            "xci_path": "ip\\mips_xlslice_0_3\\mips_xlslice_0_3.xci",
+            "inst_hier_path": "InstructionFetch/pcSrc",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "9"
+              },
+              "DIN_TO": {
+                "value": "9"
+              },
+              "DIN_WIDTH": {
+                "value": "10"
+              },
+              "DOUT_WIDTH": {
+                "value": "1"
+              }
+            }
+          },
+          "constantFour": {
+            "vlnv": "xilinx.com:ip:xlconstant:1.1",
+            "xci_name": "mips_xlconstant_0_0",
+            "xci_path": "ip\\mips_xlconstant_0_0\\mips_xlconstant_0_0.xci",
+            "inst_hier_path": "InstructionFetch/constantFour",
+            "parameters": {
+              "CONST_VAL": {
+                "value": "4"
+              },
+              "CONST_WIDTH": {
+                "value": "32"
+              }
+            }
+          },
+          "adder_0": {
+            "vlnv": "xilinx.com:module_ref:adder:1.0",
+            "xci_name": "mips_adder_0_0",
+            "xci_path": "ip\\mips_adder_0_0\\mips_adder_0_0.xci",
+            "inst_hier_path": "InstructionFetch/adder_0",
+            "parameters": {
+              "width": {
+                "value": "32"
+              }
+            },
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "adder",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "op1": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "op2": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "adderOut": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          },
+          "mux_3": {
+            "vlnv": "xilinx.com:module_ref:mux:1.0",
+            "xci_name": "mips_mux_3_0",
+            "xci_path": "ip\\mips_mux_3_0\\mips_mux_3_0.xci",
+            "inst_hier_path": "InstructionFetch/mux_3",
+            "parameters": {
+              "width": {
+                "value": "32"
+              }
+            },
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "mux",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "in0": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "in1": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "ctrl": {
+                "direction": "I"
+              },
+              "muxOut": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          },
+          "programCounter_0": {
+            "vlnv": "xilinx.com:module_ref:programCounter:1.0",
+            "xci_name": "mips_programCounter_0_0",
+            "xci_path": "ip\\mips_programCounter_0_0\\mips_programCounter_0_0.xci",
+            "inst_hier_path": "InstructionFetch/programCounter_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "programCounter",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "PCWrite": {
+                "direction": "I"
+              },
+              "i_clk": {
+                "type": "clk",
+                "direction": "I",
+                "parameters": {
+                  "CLK_DOMAIN": {
+                    "value": "mips_in_clock",
+                    "value_src": "default_prop"
+                  }
+                }
+              },
+              "pcIn": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "pcOut": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          },
+          "IF_ID_0": {
+            "vlnv": "xilinx.com:module_ref:IF_ID:1.0",
+            "xci_name": "mips_IF_ID_0_0",
+            "xci_path": "ip\\mips_IF_ID_0_0\\mips_IF_ID_0_0.xci",
+            "inst_hier_path": "InstructionFetch/IF_ID_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "IF_ID",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "IF_ID_Write": {
+                "direction": "I"
+              },
+              "clk": {
+                "type": "clk",
+                "direction": "I",
+                "parameters": {
+                  "CLK_DOMAIN": {
+                    "value": "mips_in_clock",
+                    "value_src": "default_prop"
+                  }
+                }
+              },
+              "instruction": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "pc": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "IF_Flush": {
+                "direction": "I"
+              },
+              "instructionOp": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "pcOut": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          },
+          "instructionMemory_0": {
+            "vlnv": "xilinx.com:module_ref:instructionMemory:1.0",
+            "xci_name": "mips_instructionMemory_0_0",
+            "xci_path": "ip\\mips_instructionMemory_0_0\\mips_instructionMemory_0_0.xci",
+            "inst_hier_path": "InstructionFetch/instructionMemory_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "instructionMemory",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "addressBus": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "instruction": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          }
+        },
+        "nets": {
+          "xlslice_0_Dout1": {
+            "ports": [
+              "jmpSrc/Dout",
+              "mux_0/ctrl"
+            ]
+          },
+          "instructionMemory_0_instruction": {
+            "ports": [
+              "instructionMemory_0/instruction",
+              "IF_ID_0/instruction"
+            ]
+          },
+          "adder_0_adderOut": {
+            "ports": [
+              "adder_0/adderOut",
+              "mux_3/in0",
+              "IF_ID_0/pc"
+            ]
+          },
+          "mux_3_muxOut": {
+            "ports": [
+              "mux_3/muxOut",
+              "mux_0/in0"
+            ]
+          },
+          "mux_0_muxOut": {
+            "ports": [
+              "mux_0/muxOut",
+              "programCounter_0/pcIn"
+            ]
+          },
+          "programCounter_0_pcOut": {
+            "ports": [
+              "programCounter_0/pcOut",
+              "adder_0/op1",
+              "instructionMemory_0/addressBus"
+            ]
+          },
+          "pcSrc_Dout": {
+            "ports": [
+              "pcSrc/Dout",
+              "mux_3/ctrl"
+            ]
+          },
+          "constantFour_dout": {
+            "ports": [
+              "constantFour/dout",
+              "adder_0/op2"
+            ]
+          },
+          "Conrols": {
+            "ports": [
+              "Din",
+              "pcSrc/Din",
+              "jmpSrc/Din"
+            ]
+          },
+          "i_clk_0_1": {
+            "ports": [
+              "in_clock",
+              "programCounter_0/i_clk",
+              "IF_ID_0/clk"
+            ]
+          },
+          "InsructionDecode_IF_Flush": {
+            "ports": [
+              "IF_Flush",
+              "IF_ID_0/IF_Flush"
+            ]
+          },
+          "IF_ID_0_instructionOp": {
+            "ports": [
+              "IF_ID_0/instructionOp",
+              "instructionOp"
+            ]
+          },
+          "InstructionFetch_pcOut": {
+            "ports": [
+              "IF_ID_0/pcOut",
+              "pcOut"
+            ]
+          },
+          "InsructionDecode_dout1": {
+            "ports": [
+              "in1",
+              "mux_0/in1"
+            ]
+          },
+          "InstructionDecode_adderOut": {
+            "ports": [
+              "in2",
+              "mux_3/in1"
+            ]
+          },
+          "IF_ID_Write_1": {
+            "ports": [
+              "IF_ID_Write",
+              "IF_ID_0/IF_ID_Write"
+            ]
+          },
+          "PCWrite_1": {
+            "ports": [
+              "PCWrite",
+              "programCounter_0/PCWrite"
+            ]
+          }
+        }
+      },
+      "InstructionExecute": {
+        "ports": {
+          "in0": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "in1": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "Din": {
+            "direction": "I",
+            "left": "9",
+            "right": "0"
+          },
+          "wrtData": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "in2": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "in3": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "in4": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "aluop": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "ctrl": {
+            "direction": "I",
+            "left": "1",
+            "right": "0"
+          },
+          "in_clock": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "controlop": {
+            "direction": "O",
+            "left": "9",
+            "right": "0"
+          },
+          "wrtDataop": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "RegWrtAddop": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          },
+          "ctrl1": {
+            "direction": "I",
+            "left": "1",
+            "right": "0"
+          }
+        },
+        "components": {
+          "alu_0": {
+            "vlnv": "xilinx.com:module_ref:alu:1.0",
+            "xci_name": "mips_alu_0_0",
+            "xci_path": "ip\\mips_alu_0_0\\mips_alu_0_0.xci",
+            "inst_hier_path": "InstructionExecute/alu_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "alu",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "op1": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "op2": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "aluOp": {
+                "direction": "I",
+                "left": "2",
+                "right": "0"
+              },
+              "aluOut": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          },
+          "regWrAdd": {
+            "vlnv": "xilinx.com:module_ref:mux:1.0",
+            "xci_name": "mips_mux_0_0",
+            "xci_path": "ip\\mips_mux_0_0\\mips_mux_0_0.xci",
+            "inst_hier_path": "InstructionExecute/regWrAdd",
+            "parameters": {
+              "width": {
+                "value": "5"
+              }
+            },
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "mux",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "in0": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "in1": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "ctrl": {
+                "direction": "I"
+              },
+              "muxOut": {
+                "direction": "O",
+                "left": "4",
+                "right": "0"
+              }
+            }
+          },
+          "RegDst": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "mips_xlslice_0_1",
+            "xci_path": "ip\\mips_xlslice_0_1\\mips_xlslice_0_1.xci",
+            "inst_hier_path": "InstructionExecute/RegDst",
+            "parameters": {
+              "DIN_WIDTH": {
+                "value": "10"
+              }
+            }
+          },
+          "op2Mux": {
+            "vlnv": "xilinx.com:module_ref:mux:1.0",
+            "xci_name": "mips_mux_1_0",
+            "xci_path": "ip\\mips_mux_1_0\\mips_mux_1_0.xci",
+            "inst_hier_path": "InstructionExecute/op2Mux",
+            "parameters": {
+              "width": {
+                "value": "32"
+              }
+            },
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "mux",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "in0": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "in1": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "ctrl": {
+                "direction": "I"
+              },
+              "muxOut": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          },
+          "mux3_1_0": {
+            "vlnv": "xilinx.com:module_ref:mux3_1:1.0",
+            "xci_name": "mips_mux3_1_0_0",
+            "xci_path": "ip\\mips_mux3_1_0_0\\mips_mux3_1_0_0.xci",
+            "inst_hier_path": "InstructionExecute/mux3_1_0",
+            "parameters": {
+              "width": {
+                "value": "32"
+              }
+            },
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "mux3_1",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "in0": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "in1": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "in2": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "ctrl": {
+                "direction": "I",
+                "left": "1",
+                "right": "0"
+              },
+              "muxOut": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          },
+          "EX_MEM_0": {
+            "vlnv": "xilinx.com:module_ref:EX_MEM:1.0",
+            "xci_name": "mips_EX_MEM_0_0",
+            "xci_path": "ip\\mips_EX_MEM_0_0\\mips_EX_MEM_0_0.xci",
+            "inst_hier_path": "InstructionExecute/EX_MEM_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "EX_MEM",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "clk": {
+                "type": "clk",
+                "direction": "I",
+                "parameters": {
+                  "CLK_DOMAIN": {
+                    "value": "mips_in_clock",
+                    "value_src": "default_prop"
+                  }
+                }
+              },
+              "Control": {
+                "direction": "I",
+                "left": "9",
+                "right": "0"
+              },
+              "alu": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "wrtData": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "RegWrtAdd": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "controlop": {
+                "direction": "O",
+                "left": "9",
+                "right": "0"
+              },
+              "aluop": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "wrtDataop": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "RegWrtAddop": {
+                "direction": "O",
+                "left": "4",
+                "right": "0"
+              }
+            }
+          },
+          "aluOp": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "mips_xlslice_0_2",
+            "xci_path": "ip\\mips_xlslice_0_2\\mips_xlslice_0_2.xci",
+            "inst_hier_path": "InstructionExecute/aluOp",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "5"
+              },
+              "DIN_TO": {
+                "value": "3"
+              },
+              "DIN_WIDTH": {
+                "value": "10"
+              },
+              "DOUT_WIDTH": {
+                "value": "3"
+              }
+            }
+          },
+          "ALUSrc": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "mips_xlslice_4_0",
+            "xci_path": "ip\\mips_xlslice_4_0\\mips_xlslice_4_0.xci",
+            "inst_hier_path": "InstructionExecute/ALUSrc",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "2"
+              },
+              "DIN_TO": {
+                "value": "2"
+              },
+              "DIN_WIDTH": {
+                "value": "10"
+              },
+              "DOUT_WIDTH": {
+                "value": "1"
+              }
+            }
+          },
+          "mux3_1_1": {
+            "vlnv": "xilinx.com:module_ref:mux3_1:1.0",
+            "xci_name": "mips_mux3_1_1_0",
+            "xci_path": "ip\\mips_mux3_1_1_0\\mips_mux3_1_1_0.xci",
+            "inst_hier_path": "InstructionExecute/mux3_1_1",
+            "parameters": {
+              "width": {
+                "value": "32"
+              }
+            },
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "mux3_1",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "in0": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "in1": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "in2": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "ctrl": {
+                "direction": "I",
+                "left": "1",
+                "right": "0"
+              },
+              "muxOut": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          }
+        },
+        "nets": {
+          "mux3_1_0_muxOut": {
+            "ports": [
+              "mux3_1_0/muxOut",
+              "alu_0/op1"
+            ]
+          },
+          "xlslice_0_Dout1": {
+            "ports": [
+              "aluOp/Dout",
+              "alu_0/aluOp"
+            ]
+          },
+          "alu_0_aluOut": {
+            "ports": [
+              "alu_0/aluOut",
+              "EX_MEM_0/alu"
+            ]
+          },
+          "xlslice_0_Dout_1": {
+            "ports": [
+              "RegDst/Dout",
+              "regWrAdd/ctrl"
+            ]
+          },
+          "regWrAdd_muxOut": {
+            "ports": [
+              "regWrAdd/muxOut",
+              "EX_MEM_0/RegWrtAdd"
+            ]
+          },
+          "xlslice_4_Dout": {
+            "ports": [
+              "ALUSrc/Dout",
+              "op2Mux/ctrl"
+            ]
+          },
+          "ID_EX_0_slicetsop": {
+            "ports": [
+              "in0",
+              "regWrAdd/in0"
+            ]
+          },
+          "ID_EX_0_slicefeop": {
+            "ports": [
+              "in1",
+              "regWrAdd/in1"
+            ]
+          },
+          "ID_EX_0_controlop": {
+            "ports": [
+              "Din",
+              "ALUSrc/Din",
+              "aluOp/Din",
+              "EX_MEM_0/Control",
+              "RegDst/Din"
+            ]
+          },
+          "InstructionDecode_signExtop": {
+            "ports": [
+              "in2",
+              "op2Mux/in1"
+            ]
+          },
+          "InsructionDecode_rdData1op": {
+            "ports": [
+              "in3",
+              "mux3_1_0/in0"
+            ]
+          },
+          "mux_2_muxOut": {
+            "ports": [
+              "in4",
+              "mux3_1_1/in1",
+              "mux3_1_0/in1"
+            ]
+          },
+          "InstructionExecute_aluop": {
+            "ports": [
+              "EX_MEM_0/aluop",
+              "aluop",
+              "mux3_1_1/in2",
+              "mux3_1_0/in2"
+            ]
+          },
+          "ForwardingUnit_ForwardA": {
+            "ports": [
+              "ctrl",
+              "mux3_1_0/ctrl"
+            ]
+          },
+          "i_clk_0_1": {
+            "ports": [
+              "in_clock",
+              "EX_MEM_0/clk"
+            ]
+          },
+          "InstructionExecute_controlop": {
+            "ports": [
+              "EX_MEM_0/controlop",
+              "controlop"
+            ]
+          },
+          "EX_MEM_0_wrtDataop": {
+            "ports": [
+              "EX_MEM_0/wrtDataop",
+              "wrtDataop"
+            ]
+          },
+          "InstructionExecute_RegWrtAddop": {
+            "ports": [
+              "EX_MEM_0/RegWrtAddop",
+              "RegWrtAddop"
+            ]
+          },
+          "ForwardingUnit_ForwardB": {
+            "ports": [
+              "ctrl1",
+              "mux3_1_1/ctrl"
+            ]
+          },
+          "wrtData_1": {
+            "ports": [
+              "wrtData",
+              "mux3_1_1/in0"
+            ]
+          },
+          "mux3_1_1_muxOut": {
+            "ports": [
+              "mux3_1_1/muxOut",
+              "op2Mux/in0",
+              "EX_MEM_0/wrtData"
+            ]
+          },
+          "op2Mux_muxOut": {
+            "ports": [
+              "op2Mux/muxOut",
+              "alu_0/op2"
+            ]
+          }
+        }
+      },
+      "ForwardingUnit": {
+        "ports": {
+          "Din": {
+            "direction": "I",
+            "left": "9",
+            "right": "0"
+          },
+          "Din1": {
+            "direction": "I",
+            "left": "9",
+            "right": "0"
+          },
+          "Ex_MEM_RegisterRd": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "ID_EX_RegisterRs": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "ID_EX_RegisterRt": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "MEM_WB_RegisterRd": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "ForwardA": {
+            "direction": "O",
+            "left": "1",
+            "right": "0"
+          },
+          "ForwardB": {
+            "direction": "O",
+            "left": "1",
+            "right": "0"
+          }
+        },
+        "components": {
+          "xlslice_0": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "mips_xlslice_0_8",
+            "xci_path": "ip\\mips_xlslice_0_8\\mips_xlslice_0_8.xci",
+            "inst_hier_path": "ForwardingUnit/xlslice_0",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "1"
+              },
+              "DIN_TO": {
+                "value": "1"
+              },
+              "DIN_WIDTH": {
+                "value": "10"
+              },
+              "DOUT_WIDTH": {
+                "value": "1"
+              }
+            }
+          },
+          "xlslice_1": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "mips_xlslice_1_1",
+            "xci_path": "ip\\mips_xlslice_1_1\\mips_xlslice_1_1.xci",
+            "inst_hier_path": "ForwardingUnit/xlslice_1",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "1"
+              },
+              "DIN_TO": {
+                "value": "1"
+              },
+              "DIN_WIDTH": {
+                "value": "10"
+              },
+              "DOUT_WIDTH": {
+                "value": "1"
+              }
+            }
+          },
+          "DataHazard_0": {
+            "vlnv": "xilinx.com:module_ref:DataHazard:1.0",
+            "xci_name": "mips_DataHazard_0_0",
+            "xci_path": "ip\\mips_DataHazard_0_0\\mips_DataHazard_0_0.xci",
+            "inst_hier_path": "ForwardingUnit/DataHazard_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "DataHazard",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "Ex_MEM_RegWrite": {
+                "direction": "I"
+              },
+              "Ex_MEM_RegisterRd": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "ID_EX_RegisterRs": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "ID_EX_RegisterRt": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "MEM_WB_RegWrite": {
+                "direction": "I"
+              },
+              "MEM_WB_RegisterRd": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "ForwardA": {
+                "direction": "O",
+                "left": "1",
+                "right": "0"
+              },
+              "ForwardB": {
+                "direction": "O",
+                "left": "1",
+                "right": "0"
+              }
+            }
+          }
+        },
+        "nets": {
+          "xlslice_0_Dout1": {
+            "ports": [
+              "xlslice_0/Dout",
+              "DataHazard_0/Ex_MEM_RegWrite"
+            ]
+          },
+          "xlslice_1_Dout": {
+            "ports": [
+              "xlslice_1/Dout",
+              "DataHazard_0/MEM_WB_RegWrite"
+            ]
+          },
+          "InstructionExecute_controlop": {
+            "ports": [
+              "Din",
+              "xlslice_0/Din"
+            ]
+          },
+          "MEM_WB_0_controlsop": {
+            "ports": [
+              "Din1",
+              "xlslice_1/Din"
+            ]
+          },
+          "InstructionExecute_RegWrtAddop": {
+            "ports": [
+              "Ex_MEM_RegisterRd",
+              "DataHazard_0/Ex_MEM_RegisterRd"
+            ]
+          },
+          "InsructionDecode_ID_EX_RegisterRs": {
+            "ports": [
+              "ID_EX_RegisterRs",
+              "DataHazard_0/ID_EX_RegisterRs"
+            ]
+          },
+          "ID_EX_0_slicetsop": {
+            "ports": [
+              "ID_EX_RegisterRt",
+              "DataHazard_0/ID_EX_RegisterRt"
+            ]
+          },
+          "regWrAddr_1": {
+            "ports": [
+              "MEM_WB_RegisterRd",
+              "DataHazard_0/MEM_WB_RegisterRd"
+            ]
+          },
+          "ForwardingUnit_ForwardA": {
+            "ports": [
+              "DataHazard_0/ForwardA",
+              "ForwardA"
+            ]
+          },
+          "ForwardingUnit_ForwardB": {
+            "ports": [
+              "DataHazard_0/ForwardB",
+              "ForwardB"
+            ]
+          }
+        }
+      },
+      "HazardDetectionUnit": {
+        "ports": {
+          "ID_EX_Control": {
+            "direction": "I",
+            "left": "9",
+            "right": "0"
+          },
+          "ID_EX_RegisterRt": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "IF_ID_RegisterRs": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "IF_ID_RegisterRt": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "PCWrite": {
+            "direction": "O"
+          },
+          "IF_ID_Write": {
+            "direction": "O"
+          },
+          "in1": {
+            "direction": "I",
+            "left": "9",
+            "right": "0"
+          },
+          "muxOut": {
+            "direction": "O",
+            "left": "9",
+            "right": "0"
+          }
+        },
+        "components": {
+          "xlconstant_0": {
+            "vlnv": "xilinx.com:ip:xlconstant:1.1",
+            "xci_name": "mips_xlconstant_0_2",
+            "xci_path": "ip\\mips_xlconstant_0_2\\mips_xlconstant_0_2.xci",
+            "inst_hier_path": "HazardDetectionUnit/xlconstant_0",
+            "parameters": {
+              "CONST_VAL": {
+                "value": "0"
+              },
+              "CONST_WIDTH": {
+                "value": "8"
+              }
+            }
+          },
+          "mux_0": {
+            "vlnv": "xilinx.com:module_ref:mux:1.0",
+            "xci_name": "mips_mux_0_2",
+            "xci_path": "ip\\mips_mux_0_2\\mips_mux_0_2.xci",
+            "inst_hier_path": "HazardDetectionUnit/mux_0",
+            "parameters": {
+              "width": {
+                "value": "10"
+              }
+            },
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "mux",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "in0": {
+                "direction": "I",
+                "left": "9",
+                "right": "0",
+                "parameters": {
+                  "PortWidth": {
+                    "value": "10",
+                    "value_src": "ip_prop"
+                  }
+                }
+              },
+              "in1": {
+                "direction": "I",
+                "left": "9",
+                "right": "0",
+                "parameters": {
+                  "PortWidth": {
+                    "value": "10",
+                    "value_src": "ip_prop"
+                  }
+                }
+              },
+              "ctrl": {
+                "direction": "I"
+              },
+              "muxOut": {
+                "direction": "O",
+                "left": "9",
+                "right": "0",
+                "parameters": {
+                  "PortWidth": {
+                    "value": "10",
+                    "value_src": "ip_prop"
+                  }
+                }
+              }
+            }
+          },
+          "HazardDetectionUnit_0": {
+            "vlnv": "xilinx.com:module_ref:HazardDetectionUnit:1.0",
+            "xci_name": "mips_HazardDetectionUnit_0_0",
+            "xci_path": "ip\\mips_HazardDetectionUnit_0_0\\mips_HazardDetectionUnit_0_0.xci",
+            "inst_hier_path": "HazardDetectionUnit/HazardDetectionUnit_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "HazardDetectionUnit",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "ID_EX_Control": {
+                "direction": "I",
+                "left": "9",
+                "right": "0"
+              },
+              "ID_EX_RegisterRt": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "IF_ID_RegisterRs": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "IF_ID_RegisterRt": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "ControlSrc": {
+                "direction": "O"
+              },
+              "PCWrite": {
+                "direction": "O"
+              },
+              "IF_ID_Write": {
+                "direction": "O"
+              }
+            }
+          },
+          "xlslice_0": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "mips_xlslice_0_9",
+            "xci_path": "ip\\mips_xlslice_0_9\\mips_xlslice_0_9.xci",
+            "inst_hier_path": "HazardDetectionUnit/xlslice_0",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "8"
+              },
+              "DIN_TO": {
+                "value": "8"
+              },
+              "DIN_WIDTH": {
+                "value": "10"
+              },
+              "DOUT_WIDTH": {
+                "value": "1"
+              }
+            }
+          },
+          "xlslice_1": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "mips_xlslice_1_2",
+            "xci_path": "ip\\mips_xlslice_1_2\\mips_xlslice_1_2.xci",
+            "inst_hier_path": "HazardDetectionUnit/xlslice_1",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "9"
+              },
+              "DIN_TO": {
+                "value": "9"
+              },
+              "DIN_WIDTH": {
+                "value": "10"
+              },
+              "DOUT_WIDTH": {
+                "value": "1"
+              }
+            }
+          },
+          "xlconcat_0": {
+            "vlnv": "xilinx.com:ip:xlconcat:2.1",
+            "xci_name": "mips_xlconcat_0_1",
+            "xci_path": "ip\\mips_xlconcat_0_1\\mips_xlconcat_0_1.xci",
+            "inst_hier_path": "HazardDetectionUnit/xlconcat_0",
+            "parameters": {
+              "IN0_WIDTH": {
+                "value": "8"
+              },
+              "NUM_PORTS": {
+                "value": "3"
+              }
+            }
+          }
+        },
+        "nets": {
+          "HazardDetectionUnit_0_ControlSrc": {
+            "ports": [
+              "HazardDetectionUnit_0/ControlSrc",
+              "mux_0/ctrl"
+            ]
+          },
+          "ID_EX_0_controlop": {
+            "ports": [
+              "ID_EX_Control",
+              "HazardDetectionUnit_0/ID_EX_Control"
+            ]
+          },
+          "ID_EX_0_slicetsop": {
+            "ports": [
+              "ID_EX_RegisterRt",
+              "HazardDetectionUnit_0/ID_EX_RegisterRt"
+            ]
+          },
+          "xlslice_0_Dout_1": {
+            "ports": [
+              "IF_ID_RegisterRs",
+              "HazardDetectionUnit_0/IF_ID_RegisterRs"
+            ]
+          },
+          "xlslice_1_Dout": {
+            "ports": [
+              "IF_ID_RegisterRt",
+              "HazardDetectionUnit_0/IF_ID_RegisterRt"
+            ]
+          },
+          "HazardDetectionUnit_0_PCWrite": {
+            "ports": [
+              "HazardDetectionUnit_0/PCWrite",
+              "PCWrite"
+            ]
+          },
+          "HazardDetectionUnit_0_IF_ID_Write": {
+            "ports": [
+              "HazardDetectionUnit_0/IF_ID_Write",
+              "IF_ID_Write"
+            ]
+          },
+          "xlconcat_0_dout": {
+            "ports": [
+              "in1",
+              "mux_0/in1",
+              "xlslice_0/Din",
+              "xlslice_1/Din"
+            ]
+          },
+          "mux_0_muxOut": {
+            "ports": [
+              "mux_0/muxOut",
+              "muxOut"
+            ]
+          },
+          "xlconstant_0_dout": {
+            "ports": [
+              "xlconstant_0/dout",
+              "xlconcat_0/In0"
+            ]
+          },
+          "xlslice_0_Dout": {
+            "ports": [
+              "xlslice_0/Dout",
+              "xlconcat_0/In1"
+            ]
+          },
+          "xlslice_1_Dout1": {
+            "ports": [
+              "xlslice_1/Dout",
+              "xlconcat_0/In2"
+            ]
+          },
+          "xlconcat_0_dout1": {
+            "ports": [
+              "xlconcat_0/dout",
+              "mux_0/in0"
+            ]
+          }
+        }
+      },
+      "jumpAddCalc": {
+        "ports": {
+          "Din": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "Din1": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "dout": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          }
+        },
+        "components": {
+          "xlconcat_1": {
+            "vlnv": "xilinx.com:ip:xlconcat:2.1",
+            "xci_name": "mips_xlconcat_1_0",
+            "xci_path": "ip\\mips_xlconcat_1_0\\mips_xlconcat_1_0.xci",
+            "inst_hier_path": "jumpAddCalc/xlconcat_1",
+            "parameters": {
+              "IN0_WIDTH": {
+                "value": "2"
+              },
+              "IN1_WIDTH": {
+                "value": "26"
+              },
+              "IN2_WIDTH": {
+                "value": "4"
+              },
+              "NUM_PORTS": {
+                "value": "3"
+              }
+            }
+          },
+          "xlslice_4": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "mips_xlslice_4_1",
+            "xci_path": "ip\\mips_xlslice_4_1\\mips_xlslice_4_1.xci",
+            "inst_hier_path": "jumpAddCalc/xlslice_4",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "31"
+              },
+              "DIN_TO": {
+                "value": "28"
+              },
+              "DOUT_WIDTH": {
+                "value": "4"
+              }
+            }
+          },
+          "xlslice_5": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "mips_xlslice_5_0",
+            "xci_path": "ip\\mips_xlslice_5_0\\mips_xlslice_5_0.xci",
+            "inst_hier_path": "jumpAddCalc/xlslice_5",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "25"
+              },
+              "DOUT_WIDTH": {
+                "value": "26"
+              }
+            }
+          },
+          "xlconstant_0": {
+            "vlnv": "xilinx.com:ip:xlconstant:1.1",
+            "xci_name": "mips_xlconstant_0_1",
+            "xci_path": "ip\\mips_xlconstant_0_1\\mips_xlconstant_0_1.xci",
+            "inst_hier_path": "jumpAddCalc/xlconstant_0",
+            "parameters": {
+              "CONST_VAL": {
+                "value": "0"
+              },
+              "CONST_WIDTH": {
+                "value": "2"
+              }
+            }
+          }
+        },
+        "nets": {
+          "xlslice_5_Dout": {
+            "ports": [
+              "xlslice_5/Dout",
+              "xlconcat_1/In1"
+            ]
+          },
+          "InstructionFetch_pcOut": {
+            "ports": [
+              "Din",
+              "xlslice_4/Din"
+            ]
+          },
+          "IF_ID_0_instructionOp": {
+            "ports": [
+              "Din1",
+              "xlslice_5/Din"
+            ]
+          },
+          "xlconcat_1_dout": {
+            "ports": [
+              "xlconcat_1/dout",
+              "dout"
+            ]
+          },
+          "xlconstant_0_dout": {
+            "ports": [
+              "xlconstant_0/dout",
+              "xlconcat_1/In0"
+            ]
+          },
+          "xlslice_4_Dout": {
+            "ports": [
+              "xlslice_4/Dout",
+              "xlconcat_1/In2"
+            ]
+          }
+        }
+      },
+      "InstructionDecode": {
+        "ports": {
+          "in_clock": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "control": {
+            "direction": "I",
+            "left": "9",
+            "right": "0"
+          },
+          "Dout": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          },
+          "Dout1": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          },
+          "controlop": {
+            "direction": "O",
+            "left": "9",
+            "right": "0"
+          },
+          "signExtop": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "rdData1op": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "rdData2op": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "ID_EX_RegisterRs": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          },
+          "ID_EX_RegisterRt": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          },
+          "ID_EX_RegisterRd": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          },
+          "Din": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "IF_Flush": {
+            "direction": "O"
+          },
+          "regWrAddr": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "regWrData": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "regWrEn": {
+            "direction": "I"
+          },
+          "op2": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "adderOut": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "dout2": {
+            "direction": "O",
+            "left": "9",
+            "right": "0"
+          }
+        },
+        "components": {
+          "ID_EX_0": {
+            "vlnv": "xilinx.com:module_ref:ID_EX:1.0",
+            "xci_name": "mips_ID_EX_0_0",
+            "xci_path": "ip\\mips_ID_EX_0_0\\mips_ID_EX_0_0.xci",
+            "inst_hier_path": "InstructionDecode/ID_EX_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "ID_EX",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "clk": {
+                "type": "clk",
+                "direction": "I",
+                "parameters": {
+                  "CLK_DOMAIN": {
+                    "value": "mips_in_clock",
+                    "value_src": "default_prop"
+                  }
+                }
+              },
+              "control": {
+                "direction": "I",
+                "left": "9",
+                "right": "0",
+                "parameters": {
+                  "PortWidth": {
+                    "value": "10",
+                    "value_src": "ip_prop"
+                  }
+                }
+              },
+              "signExt": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "rdData1": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "rdData2": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "IF_ID_RegisterRs": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "IF_ID_RegisterRt": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "IF_ID_RegisterRd": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "controlop": {
+                "direction": "O",
+                "left": "9",
+                "right": "0"
+              },
+              "signExtop": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "rdData1op": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "rdData2op": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "ID_EX_RegisterRs": {
+                "direction": "O",
+                "left": "4",
+                "right": "0"
+              },
+              "ID_EX_RegisterRt": {
+                "direction": "O",
+                "left": "4",
+                "right": "0"
+              },
+              "ID_EX_RegisterRd": {
+                "direction": "O",
+                "left": "4",
+                "right": "0"
+              }
+            }
+          },
+          "controlLogic_0": {
+            "vlnv": "xilinx.com:module_ref:controlLogic:1.0",
+            "xci_name": "mips_controlLogic_0_0",
+            "xci_path": "ip\\mips_controlLogic_0_0\\mips_controlLogic_0_0.xci",
+            "inst_hier_path": "InstructionDecode/controlLogic_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "controlLogic",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "instruction": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "zeroFlag": {
+                "direction": "I"
+              },
+              "regDst": {
+                "direction": "O"
+              },
+              "regWrite": {
+                "direction": "O"
+              },
+              "aluSrc": {
+                "direction": "O"
+              },
+              "aluOp": {
+                "direction": "O",
+                "left": "2",
+                "right": "0"
+              },
+              "memWrite": {
+                "direction": "O"
+              },
+              "memToReg": {
+                "direction": "O"
+              },
+              "jmpSrc": {
+                "direction": "O"
+              },
+              "pcSrc": {
+                "direction": "O"
+              },
+              "IF_Flush": {
+                "direction": "O"
+              }
+            }
+          },
+          "xlslice_0": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "mips_xlslice_0_0",
+            "xci_path": "ip\\mips_xlslice_0_0\\mips_xlslice_0_0.xci",
+            "inst_hier_path": "InstructionDecode/xlslice_0",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "25"
+              },
+              "DIN_TO": {
+                "value": "21"
+              },
+              "DOUT_WIDTH": {
+                "value": "5"
+              }
+            }
+          },
+          "xlslice_1": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "mips_xlslice_1_0",
+            "xci_path": "ip\\mips_xlslice_1_0\\mips_xlslice_1_0.xci",
+            "inst_hier_path": "InstructionDecode/xlslice_1",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "20"
+              },
+              "DIN_TO": {
+                "value": "16"
+              },
+              "DOUT_WIDTH": {
+                "value": "5"
+              }
+            }
+          },
+          "shiftLeft_0": {
+            "vlnv": "xilinx.com:module_ref:shiftLeft:1.0",
+            "xci_name": "mips_shiftLeft_0_0",
+            "xci_path": "ip\\mips_shiftLeft_0_0\\mips_shiftLeft_0_0.xci",
+            "inst_hier_path": "InstructionDecode/shiftLeft_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "shiftLeft",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "inData": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "outData": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          },
+          "xlslice_2": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "mips_xlslice_2_0",
+            "xci_path": "ip\\mips_xlslice_2_0\\mips_xlslice_2_0.xci",
+            "inst_hier_path": "InstructionDecode/xlslice_2",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "15"
+              },
+              "DIN_TO": {
+                "value": "11"
+              },
+              "DOUT_WIDTH": {
+                "value": "5"
+              }
+            }
+          },
+          "xlslice_3": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "mips_xlslice_3_0",
+            "xci_path": "ip\\mips_xlslice_3_0\\mips_xlslice_3_0.xci",
+            "inst_hier_path": "InstructionDecode/xlslice_3",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "15"
+              },
+              "DOUT_WIDTH": {
+                "value": "16"
+              }
+            }
+          },
+          "equalityChecker_0": {
+            "vlnv": "xilinx.com:module_ref:equalityChecker:1.0",
+            "xci_name": "mips_equalityChecker_0_0",
+            "xci_path": "ip\\mips_equalityChecker_0_0\\mips_equalityChecker_0_0.xci",
+            "inst_hier_path": "InstructionDecode/equalityChecker_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "equalityChecker",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "data1": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "data2": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "zeroflag": {
+                "direction": "O"
+              }
+            }
+          },
+          "RegFile_0": {
+            "vlnv": "xilinx.com:module_ref:RegFile:1.0",
+            "xci_name": "mips_RegFile_0_0",
+            "xci_path": "ip\\mips_RegFile_0_0\\mips_RegFile_0_0.xci",
+            "inst_hier_path": "InstructionDecode/RegFile_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "RegFile",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "i_clk": {
+                "type": "clk",
+                "direction": "I",
+                "parameters": {
+                  "CLK_DOMAIN": {
+                    "value": "mips_in_clock",
+                    "value_src": "default_prop"
+                  }
+                }
+              },
+              "regRdAddr1": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "regRdAddr2": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "regWrAddr": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "regWrData": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "regWrEn": {
+                "direction": "I"
+              },
+              "regRdData1": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "regRdData2": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          },
+          "signExtern_0": {
+            "vlnv": "xilinx.com:module_ref:signExtern:1.0",
+            "xci_name": "mips_signExtern_0_0",
+            "xci_path": "ip\\mips_signExtern_0_0\\mips_signExtern_0_0.xci",
+            "inst_hier_path": "InstructionDecode/signExtern_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "signExtern",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "inData": {
+                "direction": "I",
+                "left": "15",
+                "right": "0"
+              },
+              "outData": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          },
+          "adder_1": {
+            "vlnv": "xilinx.com:module_ref:adder:1.0",
+            "xci_name": "mips_adder_1_0",
+            "xci_path": "ip\\mips_adder_1_0\\mips_adder_1_0.xci",
+            "inst_hier_path": "InstructionDecode/adder_1",
+            "parameters": {
+              "width": {
+                "value": "32"
+              }
+            },
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "adder",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "op1": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "op2": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "adderOut": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          },
+          "xlconcat_0": {
+            "vlnv": "xilinx.com:ip:xlconcat:2.1",
+            "xci_name": "mips_xlconcat_0_0",
+            "xci_path": "ip\\mips_xlconcat_0_0\\mips_xlconcat_0_0.xci",
+            "inst_hier_path": "InstructionDecode/xlconcat_0",
+            "parameters": {
+              "IN3_WIDTH": {
+                "value": "3"
+              },
+              "NUM_PORTS": {
+                "value": "8"
+              }
+            }
+          }
+        },
+        "nets": {
+          "InstructionDecode_outData": {
+            "ports": [
+              "signExtern_0/outData",
+              "shiftLeft_0/inData",
+              "ID_EX_0/signExt"
+            ]
+          },
+          "RegFile_0_regRdData1": {
+            "ports": [
+              "RegFile_0/regRdData1",
+              "equalityChecker_0/data1",
+              "ID_EX_0/rdData1"
+            ]
+          },
+          "RegFile_0_regRdData2": {
+            "ports": [
+              "RegFile_0/regRdData2",
+              "equalityChecker_0/data2",
+              "ID_EX_0/rdData2"
+            ]
+          },
+          "xlslice_2_Dout": {
+            "ports": [
+              "xlslice_2/Dout",
+              "ID_EX_0/IF_ID_RegisterRd"
+            ]
+          },
+          "alu_0_zeroFlag1": {
+            "ports": [
+              "equalityChecker_0/zeroflag",
+              "controlLogic_0/zeroFlag"
+            ]
+          },
+          "controlLogic_0_regDst": {
+            "ports": [
+              "controlLogic_0/regDst",
+              "xlconcat_0/In0"
+            ]
+          },
+          "controlLogic_0_regWrite": {
+            "ports": [
+              "controlLogic_0/regWrite",
+              "xlconcat_0/In1"
+            ]
+          },
+          "controlLogic_0_aluSrc": {
+            "ports": [
+              "controlLogic_0/aluSrc",
+              "xlconcat_0/In2"
+            ]
+          },
+          "controlLogic_0_aluOp": {
+            "ports": [
+              "controlLogic_0/aluOp",
+              "xlconcat_0/In3"
+            ]
+          },
+          "controlLogic_0_memWrite": {
+            "ports": [
+              "controlLogic_0/memWrite",
+              "xlconcat_0/In4"
+            ]
+          },
+          "controlLogic_0_memToReg": {
+            "ports": [
+              "controlLogic_0/memToReg",
+              "xlconcat_0/In5"
+            ]
+          },
+          "controlLogic_0_jmpsrc": {
+            "ports": [
+              "controlLogic_0/jmpSrc",
+              "xlconcat_0/In6"
+            ]
+          },
+          "controlLogic_0_pcSrc": {
+            "ports": [
+              "controlLogic_0/pcSrc",
+              "xlconcat_0/In7"
+            ]
+          },
+          "shiftLeft_0_outData": {
+            "ports": [
+              "shiftLeft_0/outData",
+              "adder_1/op1"
+            ]
+          },
+          "xlslice_3_Dout": {
+            "ports": [
+              "xlslice_3/Dout",
+              "signExtern_0/inData"
+            ]
+          },
+          "i_clk_0_1": {
+            "ports": [
+              "in_clock",
+              "RegFile_0/i_clk",
+              "ID_EX_0/clk"
+            ]
+          },
+          "mux_0_muxOut": {
+            "ports": [
+              "control",
+              "ID_EX_0/control"
+            ]
+          },
+          "xlslice_0_Dout_1": {
+            "ports": [
+              "xlslice_0/Dout",
+              "Dout",
+              "RegFile_0/regRdAddr1",
+              "ID_EX_0/IF_ID_RegisterRs"
+            ]
+          },
+          "xlslice_1_Dout": {
+            "ports": [
+              "xlslice_1/Dout",
+              "Dout1",
+              "RegFile_0/regRdAddr2",
+              "ID_EX_0/IF_ID_RegisterRt"
+            ]
+          },
+          "ID_EX_0_controlop": {
+            "ports": [
+              "ID_EX_0/controlop",
+              "controlop"
+            ]
+          },
+          "InstructionDecode_signExtop": {
+            "ports": [
+              "ID_EX_0/signExtop",
+              "signExtop"
+            ]
+          },
+          "InsructionDecode_rdData1op": {
+            "ports": [
+              "ID_EX_0/rdData1op",
+              "rdData1op"
+            ]
+          },
+          "InstructionDecode_rdData2op": {
+            "ports": [
+              "ID_EX_0/rdData2op",
+              "rdData2op"
+            ]
+          },
+          "InsructionDecode_ID_EX_RegisterRs": {
+            "ports": [
+              "ID_EX_0/ID_EX_RegisterRs",
+              "ID_EX_RegisterRs"
+            ]
+          },
+          "ID_EX_0_slicetsop": {
+            "ports": [
+              "ID_EX_0/ID_EX_RegisterRt",
+              "ID_EX_RegisterRt"
+            ]
+          },
+          "ID_EX_0_slicefeop": {
+            "ports": [
+              "ID_EX_0/ID_EX_RegisterRd",
+              "ID_EX_RegisterRd"
+            ]
+          },
+          "IF_ID_0_instructionOp": {
+            "ports": [
+              "Din",
+              "xlslice_3/Din",
+              "xlslice_2/Din",
+              "xlslice_1/Din",
+              "xlslice_0/Din",
+              "controlLogic_0/instruction"
+            ]
+          },
+          "InsructionDecode_IF_Flush": {
+            "ports": [
+              "controlLogic_0/IF_Flush",
+              "IF_Flush"
+            ]
+          },
+          "regWrAddr_1": {
+            "ports": [
+              "regWrAddr",
+              "RegFile_0/regWrAddr"
+            ]
+          },
+          "mux_2_muxOut": {
+            "ports": [
+              "regWrData",
+              "RegFile_0/regWrData"
+            ]
+          },
+          "xlslice_0_Dout": {
+            "ports": [
+              "regWrEn",
+              "RegFile_0/regWrEn"
+            ]
+          },
+          "InstructionFetch_pcOut": {
+            "ports": [
+              "op2",
+              "adder_1/op2"
+            ]
+          },
+          "InstructionDecode_adderOut": {
+            "ports": [
+              "adder_1/adderOut",
+              "adderOut"
+            ]
+          },
+          "xlconcat_0_dout": {
+            "ports": [
+              "xlconcat_0/dout",
+              "dout2"
+            ]
+          }
+        }
+      }
+    },
+    "nets": {
+      "i_clk_0_1": {
+        "ports": [
+          "in_clock",
+          "Memory/in_clock",
+          "InstructionFetch/in_clock",
+          "InstructionExecute/in_clock",
+          "InstructionDecode/in_clock"
+        ]
+      },
+      "mux_2_muxOut": {
+        "ports": [
+          "WriteBack/muxOut",
+          "InstructionExecute/in4",
+          "InstructionDecode/regWrData"
+        ]
+      },
+      "IF_ID_0_instructionOp": {
+        "ports": [
+          "InstructionFetch/instructionOp",
+          "jumpAddCalc/Din1",
+          "InstructionDecode/Din"
+        ]
+      },
+      "ID_EX_0_slicetsop": {
+        "ports": [
+          "InstructionDecode/ID_EX_RegisterRt",
+          "InstructionExecute/in0",
+          "ForwardingUnit/ID_EX_RegisterRt",
+          "HazardDetectionUnit/ID_EX_RegisterRt"
+        ]
+      },
+      "ID_EX_0_slicefeop": {
+        "ports": [
+          "InstructionDecode/ID_EX_RegisterRd",
+          "InstructionExecute/in1"
+        ]
+      },
+      "InstructionFetch_pcOut": {
+        "ports": [
+          "InstructionFetch/pcOut",
+          "jumpAddCalc/Din",
+          "InstructionDecode/op2"
+        ]
+      },
+      "ID_EX_0_controlop": {
+        "ports": [
+          "InstructionDecode/controlop",
+          "InstructionExecute/Din",
+          "HazardDetectionUnit/ID_EX_Control"
+        ]
+      },
+      "InstructionDecode_rdData2op": {
+        "ports": [
+          "InstructionDecode/rdData2op",
+          "InstructionExecute/wrtData"
+        ]
+      },
+      "EX_MEM_0_wrtDataop": {
+        "ports": [
+          "InstructionExecute/wrtDataop",
+          "Memory/writeData"
+        ]
+      },
+      "InstructionExecute_aluop": {
+        "ports": [
+          "InstructionExecute/aluop",
+          "Memory/writeAddress"
+        ]
+      },
+      "MEM_WB_0_aluop": {
+        "ports": [
+          "Memory/aluop",
+          "WriteBack/in0"
+        ]
+      },
+      "MEM_WB_0_rdDataop": {
+        "ports": [
+          "Memory/rdDataop",
+          "WriteBack/in1"
+        ]
+      },
+      "MEM_WB_0_controlsop": {
+        "ports": [
+          "Memory/controlsop",
+          "WriteBack/Din",
+          "ForwardingUnit/Din1"
+        ]
+      },
+      "InstructionExecute_RegWrtAddop": {
+        "ports": [
+          "InstructionExecute/RegWrtAddop",
+          "Memory/regWrtAdd",
+          "ForwardingUnit/Ex_MEM_RegisterRd"
+        ]
+      },
+      "regWrAddr_1": {
+        "ports": [
+          "Memory/regWrtAddop",
+          "ForwardingUnit/MEM_WB_RegisterRd",
+          "InstructionDecode/regWrAddr"
+        ]
+      },
+      "xlslice_0_Dout": {
+        "ports": [
+          "WriteBack/Dout",
+          "InstructionDecode/regWrEn"
+        ]
+      },
+      "InstructionDecode_signExtop": {
+        "ports": [
+          "InstructionDecode/signExtop",
+          "InstructionExecute/in2"
+        ]
+      },
+      "InstructionDecode_adderOut": {
+        "ports": [
+          "InstructionDecode/adderOut",
+          "InstructionFetch/in2"
+        ]
+      },
+      "InstructionExecute_controlop": {
+        "ports": [
+          "InstructionExecute/controlop",
+          "Memory/Din",
+          "ForwardingUnit/Din"
+        ]
+      },
+      "InsructionDecode_dout1": {
+        "ports": [
+          "jumpAddCalc/dout",
+          "InstructionFetch/in1"
+        ]
+      },
+      "InsructionDecode_IF_Flush": {
+        "ports": [
+          "InstructionDecode/IF_Flush",
+          "InstructionFetch/IF_Flush"
+        ]
+      },
+      "InsructionDecode_ID_EX_RegisterRs": {
+        "ports": [
+          "InstructionDecode/ID_EX_RegisterRs",
+          "ForwardingUnit/ID_EX_RegisterRs"
+        ]
+      },
+      "ForwardingUnit_ForwardA": {
+        "ports": [
+          "ForwardingUnit/ForwardA",
+          "InstructionExecute/ctrl"
+        ]
+      },
+      "ForwardingUnit_ForwardB": {
+        "ports": [
+          "ForwardingUnit/ForwardB",
+          "InstructionExecute/ctrl1"
+        ]
+      },
+      "InsructionDecode_rdData1op": {
+        "ports": [
+          "InstructionDecode/rdData1op",
+          "InstructionExecute/in3"
+        ]
+      },
+      "xlconcat_0_dout": {
+        "ports": [
+          "InstructionDecode/dout2",
+          "InstructionFetch/Din",
+          "HazardDetectionUnit/in1"
+        ]
+      },
+      "HazardDetectionUnit_0_IF_ID_Write": {
+        "ports": [
+          "HazardDetectionUnit/IF_ID_Write",
+          "InstructionFetch/IF_ID_Write"
+        ]
+      },
+      "HazardDetectionUnit_0_PCWrite": {
+        "ports": [
+          "HazardDetectionUnit/PCWrite",
+          "InstructionFetch/PCWrite"
+        ]
+      },
+      "mux_0_muxOut": {
+        "ports": [
+          "HazardDetectionUnit/muxOut",
+          "InstructionDecode/control"
+        ]
+      },
+      "xlslice_0_Dout_1": {
+        "ports": [
+          "InstructionDecode/Dout",
+          "HazardDetectionUnit/IF_ID_RegisterRs"
+        ]
+      },
+      "xlslice_1_Dout": {
+        "ports": [
+          "InstructionDecode/Dout1",
+          "HazardDetectionUnit/IF_ID_RegisterRt"
+        ]
+      }
+    }
+  }
+}
